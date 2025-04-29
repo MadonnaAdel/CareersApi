@@ -2,10 +2,10 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
 const path = require("path");
-const { swaggerSpec, swaggerUi } = require('./swagger');
-
+const { swaggerUi, swaggerSpec } = require("./swagger");
+const port = process.env.PORT || 3000;
 
 const JobRoute = require("./routes/JobRoute");
 const CompanyRoute = require("./routes/CompanyRoutes");
@@ -30,7 +30,7 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use("/images", express.static(path.join(__dirname, "images")));
 
 app.use("/users", usersRoute);
 app.use("/jobs", JobRoute);
@@ -43,17 +43,17 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-app.get("/favicon.ico", (req, res) => res.status(204).end()); 
+app.get("/favicon.ico", (req, res) => res.status(204).end());
 
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
     console.log("Connected to MongoDB");
-    app.listen(process.env.PORT, () => {
-      console.log("Server started at Port", process.env.PORT);
+    app.listen(port, () => {
+      console.log("Server started at Port", port);
     });
   })
   .catch((error) => {
     console.error("Error connecting to MongoDB:", error);
   });
-  module.exports = app; 
+module.exports = app;
