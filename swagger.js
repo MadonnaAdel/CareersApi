@@ -27,7 +27,7 @@ const options = {
     ],
     servers: [
       {
-        url: process.env.URL,
+        url: "https://careers-api-six.vercel.app",
       },
     ],
   },
