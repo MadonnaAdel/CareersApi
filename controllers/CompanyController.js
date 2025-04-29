@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { companyModel } = require("../models/CompanyModel");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const otps = new Map();
