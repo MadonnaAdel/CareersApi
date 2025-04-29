@@ -67,7 +67,7 @@ router.get('/foundedJob/:id', foundedJobByIdDona);
  *           type: string
  *         description: Job ID
  *     security:
- *       - bearerAuth: []   <-- تم تعديل المسافة لتكون متساوية
+ *       - bearerAuth: []  
  *     responses:
  *       200:
  *         description: Job details
