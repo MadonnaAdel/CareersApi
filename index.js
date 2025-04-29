@@ -39,6 +39,11 @@ app.use("/companies", CompanyRoute);
 app.use("/savedJobs", savedJobRoutes);
 app.use("/appliedJobs", appliedJobsRoute);
 app.use("/upload", upload);
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
+
+app.get("/favicon.ico", (req, res) => res.status(204).end()); 
 
 mongoose
   .connect(process.env.MONGO)
