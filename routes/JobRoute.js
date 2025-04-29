@@ -31,28 +31,6 @@ const {
  */
 router.get('/get', getAllJobs);
 
-/**
- * @swagger
- * /jobs/get/{id}:
- *   get:
- *     summary: Get a job by ID
- *     tags: [Jobs]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: Job ID
- *    security:
- *       - bearerAuth: []
- *     responses:
- *       200:
- *         description: Job details
- *       404:
- *         description: Job not found
- */
-router.get('/get/:id', getJobById);
 
 /**
  * @swagger
@@ -75,6 +53,28 @@ router.get('/get/:id', getJobById);
  */
 router.get('/foundedJob/:id', foundedJobByIdDona);
 
+/**
+ * @swagger
+ * /jobs/get/{id}:
+ *   get:
+ *     summary: Get a job by ID
+ *     tags: [Jobs]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Job ID
+ *     security:
+ *       - bearerAuth: []   <-- تم تعديل المسافة لتكون متساوية
+ *     responses:
+ *       200:
+ *         description: Job details
+ *       404:
+ *         description: Job not found
+ */
+router.get('/get/:id', getJobById);
 
 /**
  * @swagger
@@ -89,8 +89,8 @@ router.get('/foundedJob/:id', foundedJobByIdDona);
  *         schema:
  *           type: string
  *         description: Company ID
- *    security:
- *       - bearerAuth: []
+ *     security:
+ *       - bearerAuth: []   
  *     responses:
  *       200:
  *         description: List of jobs

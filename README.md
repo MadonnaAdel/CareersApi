@@ -44,5 +44,5 @@ This is a RESTful API built using Node.js, Express, and MongoDB for managing job
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/job-portal-api.git
-cd job-portal-api
+git clone [https://github.com/MadonnaAdel/CareersApi]
+cd CareersApi
