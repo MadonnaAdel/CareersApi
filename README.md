@@ -40,6 +40,8 @@ This is a RESTful API built using Node.js, Express, and MongoDB for managing job
 ---
 
 ## 🚀 Getting Started
+Docs: https://editor.swagger.io/?url=https://raw.githubusercontent.com/MadonnaAdel/careersAPI-swagger-docs/refs/heads/main/swagger.json
+versel: careers-api-six.vercel.app/api-docs/
 
 ### 1. Clone the repo
 
