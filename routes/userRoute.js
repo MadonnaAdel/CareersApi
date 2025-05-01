@@ -391,7 +391,7 @@ router.post("/resetpassword", userController.resetPassword);
  */
 router.post('/change-password', userController.changePassword);
 
-  
+router.post("/login/google", userController.loginWithGoogle);
 
   
 module.exports = router;
