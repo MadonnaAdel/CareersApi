@@ -6,9 +6,9 @@ const desiredJobTypesEnum = [
   "Part Time",
   "Internship",
   "Freelance",
-  "None",
+  "Other",
 ];
-const experienceLevelEnum = ["Fresh", "Junior", "Senior", "Expert"];
+const experienceLevelEnum = ["Fresh", "Junior", "Senior", "Expert","Mid Level"];
 const currentYear = new Date().getFullYear();
 const fromDate = Array.from({ length: currentYear - 1989 }, (_, i) => (1990 + i).toString());
 const toDate = [...fromDate, "Present"];

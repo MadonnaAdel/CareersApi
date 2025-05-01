@@ -160,7 +160,7 @@ const register = async (req, res) => {
       return res.status(400).json({ message: "User already exists" });
     }
     const baseUrl = `${req.protocol}://${req.get("host")}`;
-    const defaultProfilePhoto = `${baseUrl}/images/User-Profile-PNG-Image.png`;
+    const defaultProfilePhoto = `${baseUrl}/images/User-Profile-PNG-Image.svg`;
     const userProfilePhoto =
       profilePhoto && profilePhoto.trim() !== ""
         ? profilePhoto
