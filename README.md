@@ -33,16 +33,14 @@ This is a RESTful API built using Node.js, Express, and MongoDB for managing job
 | **dotenv**               | Load environment variables from `.env` file                  |
 | **cors**                 | Enable Cross-Origin Resource Sharing                         |
 | **swagger-jsdoc**        | Generate Swagger docs from JSDoc comments                    |
-| **swagger-ui-express**   | Serve interactive Swagger docs at `/api-docs`                |
+| **swagger-ui-express**   | Serve interactive Swagger docs at (https://editor.swagger.io/?url=https://raw.githubusercontent.com/MadonnaAdel/careersAPI-swagger-docs/refs/heads/main/swagger.json)             |
 | **path**                 | Utilities for working with file and directory paths          |
 | **nodemon**              | Development tool for auto-restarting the server              |
 
 ---
 
 ## 🚀 Getting Started
-Docs: https://editor.swagger.io/?url=https://raw.githubusercontent.com/MadonnaAdel/careersAPI-swagger-docs/refs/heads/main/swagger.json
-
-versel: careers-api-six.vercel.app/api-docs/
+versel: careers-api-six.vercel.app/
 
 ### 1. Clone the repo
 
