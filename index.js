@@ -7,6 +7,9 @@ const path = require("path");
 const { swaggerUi, swaggerSpec } = require("./swagger");
 const port = process.env.PORT || 3000;
 
+
+
+
 const JobRoute = require("./routes/JobRoute");
 const CompanyRoute = require("./routes/CompanyRoutes");
 const usersRoute = require("./routes/userRoute");
@@ -43,10 +46,14 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
+
+
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 
 mongoose
-  .connect(process.env.MONGO)
+  .connect(process.env.MONGO,{ 
+    serverSelectionTimeoutMS: 5000,
+  })
   .then(() => {
     console.log("Connected to MongoDB");
     app.listen(port, () => {
