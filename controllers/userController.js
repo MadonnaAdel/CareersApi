@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const usersModel = require("../models/userModel");
 const nodemailer = require("nodemailer");
 const otps = new Map();
-
+const cloudinary = require("../cloudinary");
 require("dotenv").config();
 
 const transporter = nodemailer.createTransport({
@@ -55,8 +55,8 @@ const updateUser = async (req, res) => {
     const updatedData = { ...req.body };
 
     if (req.file) {
-      const baseUrl = `${req.protocol}://${req.get("host")}`;
-      updatedData.profilePhoto = `${baseUrl}/images/${req.file.filename}`;
+      const result = await cloudinary.uploader.upload(req.file.path);
+      updatedData.profilePhoto = result.secure_url;
     }
 
     const updatedUser = await usersModel.findByIdAndUpdate(id, updatedData, {
@@ -129,7 +129,7 @@ const changePassword = async (req, res) => {
     res.json({ message: "Password changed successfully" });
   } catch (err) {
     console.error(`Change Password Error: ${err.message}`);
-    res.status(500).json({ message: `Server error: ${err.message}`});
+    res.status(500).json({ message: `Server error: ${err.message}` });
   }
 };
 
@@ -220,11 +220,15 @@ const login = async (req, res) => {
   try {
     let user = await usersModel.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: "Invalid Credentials, User is not found" });
+      return res
+        .status(400)
+        .json({ message: "Invalid Credentials, User is not found" });
     }
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: "Invalid Credentials, password doesn't match" });
+      return res
+        .status(400)
+        .json({ message: "Invalid Credentials, password doesn't match" });
     }
 
     const payload = {
@@ -247,7 +251,7 @@ const login = async (req, res) => {
     );
   } catch (err) {
     console.error(`Login Error: ${err.message}`);
-    return res.status(500).json({ message: `Server error: ${err.message}`});
+    return res.status(500).json({ message: `Server error: ${err.message}` });
   }
 };
 
@@ -289,9 +293,8 @@ const RequestOTP = async (req, res) => {
             </p>
           </div>
         </div>
-      `
+      `,
     };
-    
 
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
@@ -301,7 +304,7 @@ const RequestOTP = async (req, res) => {
       res.status(200).json({ message: "OTP sent successfully" });
     });
   } catch (err) {
-    res.status(500).json({ message:`Server error: ${err.message}` });
+    res.status(500).json({ message: `Server error: ${err.message}` });
   }
 };
 
