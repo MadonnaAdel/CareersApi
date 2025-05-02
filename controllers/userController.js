@@ -266,9 +266,32 @@ const RequestOTP = async (req, res) => {
     const mailOptions = {
       from: process.env.EMAIL,
       to: email,
-      subject: "Your OTP Code",
-      text: `Hello, Your OTP code is ${OTP}`,
+      subject: "Your One-Time Password (OTP)",
+      html: `
+        <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f9f9f9;">
+          <div style="max-width: 500px; margin: auto; background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+            <h2 style="color: #333;">🔐 Your OTP Code</h2>
+            <p style="font-size: 16px; color: #555;">
+              Hello,
+            </p>
+            <p style="font-size: 16px; color: #555;">
+              Here is your one-time password (OTP). Please use it to complete your action:
+            </p>
+            <p style="font-size: 24px; font-weight: bold; color: #2c3e50; text-align: center; margin: 20px 0;">
+              ${OTP}
+            </p>
+            <p style="font-size: 14px; color: #999;">
+              This code is valid for a limited time only. If you didn’t request it, please ignore this email.
+            </p>
+            <p style="font-size: 14px; color: #999; margin-top: 30px;">
+              Regards,<br>
+              Your App Team
+            </p>
+          </div>
+        </div>
+      `
     };
+    
 
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
