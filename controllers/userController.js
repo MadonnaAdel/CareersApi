@@ -285,7 +285,7 @@ const RequestOTP = async (req, res) => {
             </p>
             <p style="font-size: 14px; color: #999; margin-top: 30px;">
               Regards,<br>
-              Your App Team
+              Careers Team
             </p>
           </div>
         </div>
