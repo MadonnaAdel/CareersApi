@@ -182,7 +182,7 @@ const RequestCompanyOTP = async (req, res) => {
     });
   } catch (err) {
     console.error("Server error:", err);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: `Server error: ${err.message}`});
   }
 };
 
@@ -209,7 +209,7 @@ const verifyOTP = async (req, res) => {
 
     res.status(200).json({ message: "OTP verified successfully" });
   } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: `Server error: ${err.message}`});
   }
 };
 
@@ -234,14 +234,13 @@ const resetCompanyPassword = async (req, res) => {
       return res.status(400).json({ message: "OTP not verified" });
     }
 
-    company.companyPassword = newPassword; // بدون هاش
-    await company.save(); // الـ pre save هيهاندل الهاش
-
+    company.companyPassword = newPassword; 
+    await company.save();
     otps.delete(company.id);
 
     res.status(200).json({ message: "Password reset successfully" });
   } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: `Server error: ${err.message}`});
   }
 };
 

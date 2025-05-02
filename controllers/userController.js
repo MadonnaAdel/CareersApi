@@ -129,7 +129,7 @@ const changePassword = async (req, res) => {
     res.json({ message: "Password changed successfully" });
   } catch (err) {
     console.error(`Change Password Error: ${err.message}`);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: `Server error: ${err.message}`});
   }
 };
 
@@ -247,7 +247,7 @@ const login = async (req, res) => {
     );
   } catch (err) {
     console.error(`Login Error: ${err.message}`);
-    return res.status(500).json({ message: "Server error" });
+    return res.status(500).json({ message: `Server error: ${err.message}`});
   }
 };
 
@@ -301,7 +301,7 @@ const RequestOTP = async (req, res) => {
       res.status(200).json({ message: "OTP sent successfully" });
     });
   } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message:`Server error: ${err.message}` });
   }
 };
 
@@ -327,7 +327,7 @@ const verifyOTP = async (req, res) => {
 
     res.send("OTP verified successfully");
   } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: `Server error: ${err.message}` });
   }
 };
 
@@ -351,7 +351,7 @@ const resetPassword = async (req, res) => {
     otps.delete(user.id);
     res.send("Password reset successful");
   } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: `Server error: ${err.message}` });
   }
 };
 
@@ -384,7 +384,7 @@ const loginWithGoogle = async (req, res) => {
       }
     );
   } catch (err) {
-    return res.status(500).json({ message: "Server error" });
+    return res.status(500).json({ message: `Server error: ${err.message}` });
   }
 };
 
@@ -424,7 +424,7 @@ const registerWithGoogle = async (req, res) => {
       }
     );
   } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: `Server error: ${err.message}` });
   }
 };
 
