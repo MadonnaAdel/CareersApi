@@ -52,7 +52,7 @@ app.get("/favicon.ico", (req, res) => res.status(204).end());
 
 mongoose
   .connect(process.env.MONGO,{ 
-    serverSelectionTimeoutMS: 5000,
+    serverSelectionTimeoutMS: 15000,
   })
   .then(() => {
     console.log("Connected to MongoDB");
