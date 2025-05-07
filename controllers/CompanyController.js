@@ -170,8 +170,72 @@ const RequestCompanyOTP = async (req, res) => {
       from: process.env.EMAIL,
       to: companyEmail,
       subject: "Your Company OTP Code",
-      text: `Hello, Your OTP code is ${OTP}`,
+      html: `
+        <html>
+          <head>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f7fc;
+                margin: 0;
+                padding: 20px;
+              }
+              .container {
+                background-color: #ffffff;
+                padding: 40px;
+                border-radius: 8px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                max-width: 600px;
+                margin: 0 auto;
+              }
+              h1 {
+                color: #4caf50;
+                font-size: 24px;
+                text-align: center;
+              }
+              p {
+                color: #333333;
+                font-size: 16px;
+                line-height: 1.6;
+              }
+              .otp {
+                font-size: 22px;
+                font-weight: bold;
+                color: #ffffff;
+                background-color: #4caf50;
+                padding: 10px 20px;
+                border-radius: 5px;
+                text-align: center;
+                margin: 20px 0;
+              }
+              .footer {
+                text-align: center;
+                font-size: 12px;
+                color: #888888;
+                margin-top: 20px;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <h1>Welcome to ${company.companyName}</h1>
+              <p>Hello,</p>
+              <p>We have received a request to send you an OTP (One-Time Password) for verification.</p>
+              <div class="otp">
+                Your OTP code is: <strong>${OTP}</strong>
+              </div>
+              <p>This code will expire in 10 minutes. If you didn't request this, please ignore this email.</p>
+              <p>Best regards,</p>
+              <p>The Careers Team</p>
+              <div class="footer">
+                <p>&copy; 2025 Careers. All Rights Reserved.</p>
+              </div>
+            </div>
+          </body>
+        </html>
+      `,
     };
+    
 
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {

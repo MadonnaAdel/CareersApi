@@ -24,9 +24,9 @@ const { auth } = require("../middlewares/auth");
  *         description: Server error
  */
 
-router.get("/", auth, getJobForm);
+router.get("/", getJobForm);
 
-router.get("/:id", auth, getFormByJobId);
+router.get("/:id", getFormByJobId);
 
 /**
  * @swagger
@@ -63,7 +63,7 @@ router.get("/:id", auth, getFormByJobId);
  *         description: Job form not found
  */
 
-router.put("/:id", auth, updateJobForm);
+router.put("/:id", updateJobForm);
 
 /**
  * @swagger
@@ -84,7 +84,7 @@ router.put("/:id", auth, updateJobForm);
  *       404:
  *         description: Job form not found
  */
-router.get("/:id", auth, getFormByJobId);
+router.get("/:id", getFormByJobId);
 
 /**
  * @swagger
@@ -111,7 +111,7 @@ router.get("/:id", auth, getFormByJobId);
  *       400:
  *         description: Bad request
  */
-router.post("/", auth, addJobForm);
+router.post("/", addJobForm);
 
 /**
  * @swagger
@@ -134,6 +134,6 @@ router.post("/", auth, addJobForm);
  *       404:
  *         description: Job form not found
  */
-router.delete("/:id", auth, deleteJobForm);
+router.delete("/:id", deleteJobForm);
 
 module.exports = router;

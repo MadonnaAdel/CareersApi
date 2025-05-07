@@ -3,18 +3,18 @@ const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
 const multer = require('multer');
-const path = require("path");
 const { auth } = require("../middlewares/auth");
+const multerStorageCloudinary = require('multer-storage-cloudinary');
+const cloudinary = require("../cloudinary"); 
 
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, path.join(__dirname, "../images"));
-    },
-    filename: function(req, file, cb) {
-        cb(null, file.fieldname + "_" + Date.now() + path.extname(file.originalname));
-    }
+const storage = new multerStorageCloudinary.CloudinaryStorage({
+  cloudinary: cloudinary,
+  folder: 'images',  
+  allowedFormats: ['jpg', 'jpeg', 'png', 'gif'], 
 });
-const upload = multer({ storage });
+
+const upload = multer({ storage: storage });
+
 
 /**
  * @swagger
@@ -146,7 +146,7 @@ router.get("/", userController.getAllUsers);
  *       404:
  *         description: User not found
  */
-router.get("/:id",auth, userController.getUserById);
+router.get("/:id", userController.getUserById);
 
 /**
  * @swagger

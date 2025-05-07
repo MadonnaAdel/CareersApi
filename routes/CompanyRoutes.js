@@ -16,7 +16,6 @@ const {
   verifyOTP,
   resetCompanyPassword
 } = require('../controllers/CompanyController');
-const { auth } = require('../middlewares/auth');
 
 /**
  * @swagger
@@ -175,7 +174,7 @@ router.post('/sendMail', RequestCompanyOTP);
  *       400:
  *         description: Invalid OTP
  */
-router.post('/verifyOTP',auth, verifyOTP);
+router.post('/verifyOTP', verifyOTP);
 
 /**
  * @swagger
