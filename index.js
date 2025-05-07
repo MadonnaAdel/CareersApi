@@ -17,6 +17,7 @@ const additionalQuestionsRoute = require("./routes/additionalQuestionsRoutes");
 const savedJobRoutes = require("./routes/savedJobsRoute");
 const appliedJobsRoute = require("./routes/appliedJobsRoute");
 const upload = require("./routes/upload");
+const connectToDB = require("./db");
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
@@ -50,17 +51,12 @@ app.get("/", (req, res) => {
 
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 
-mongoose
-  .connect(process.env.MONGO,{ 
-    serverSelectionTimeoutMS: 5000,
-  })
+connectToDB()
   .then(() => {
-    console.log("Connected to MongoDB");
     app.listen(port, () => {
       console.log("Server started at Port", port);
     });
   })
   .catch((error) => {
-    console.error("Error connecting to MongoDB:", error);
+    console.error("Error starting server:", error);
   });
-  module.exports = app;
