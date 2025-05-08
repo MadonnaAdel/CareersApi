@@ -1,26 +1,17 @@
 const mongoose = require("mongoose");
 
-let isConnected;
-
-const connectToDB = async () => {
-  if (isConnected) {
-    console.log("=> using existing database connection");
-    return;
-  }
-
+const connectDB = async () => {
   try {
-    const db = await mongoose.connect(process.env.MONGO, {
+    await mongoose.connect(process.env.MONGO, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      serverSelectionTimeoutMS: 5000,
+      serverSelectionTimeoutMS: 10000,
     });
-
-    isConnected = db.connections[0].readyState;
-    console.log("=> connected to database");
+    console.log("MongoDB connected ✅");
   } catch (error) {
-    console.error("=> error connecting to database:", error);
+    console.error("MongoDB connection error ❌:", error);
     throw error;
   }
 };
 
-module.exports = connectToDB;
+module.exports = connectDB;
