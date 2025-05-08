@@ -95,4 +95,5 @@ The API is deployed on Vercel:
 
 📃 Swagger API Documentation  
 Interactive documentation available at:  
-👉 [Swagger UI](https://app.swaggerhub.com/apis-docs/careers-6f6/Careers/1.0.0)
+👉 [Swagger UI](https://editor.swagger.io/?url=https://raw.githubusercontent.com/careersAPI-swagger-docs/refs/heads/main/swagger.json) 
+👉👉👉[swagger,yaml]
