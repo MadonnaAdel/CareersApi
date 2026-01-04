@@ -237,13 +237,13 @@ const RequestCompanyOTP = async (req, res) => {
     };
     
 
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error("Failed to send mail:", error);
-        return res.status(500).json({ message: "Failed to send OTP" });
-      }
-      res.status(200).json({ message: "OTP sent successfully" });
-    });
+  //   transporter.sendMail(mailOptions, (error, info) => {
+  //     if (error) {
+  //       console.error("Failed to send mail:", error);
+  //       return res.status(500).json({ message: "Failed to send OTP" });
+  //     }
+  //     res.status(200).json({ message: "OTP sent successfully" });
+  //   });
   } catch (err) {
     console.error("Server error:", err);
     res.status(500).json({ message: `Server error: ${err.message}`});
